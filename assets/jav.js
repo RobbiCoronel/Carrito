@@ -51,50 +51,27 @@ function itemSeleccionado()
         }
 }
 
-function genera_tabla(nombre, precio) {
-    // Obtener la referencia del elemento body
-    var body = document.getElementsByClassName("addT")[0];
+function genera_Fila(tableID , nom, pre) {
+    // Obtiene una referencia a la tabla
+    var idTabla = document.getElementById(tableID);
   
-    // Crea un elemento <table> y un elemento <tbody>
-    var tabla   = document.createElement("table");
-    var tblBody = document.createElement("tbody");
+    // Inserta una fila en la tabla, en el índice 0
+    var nuevaFila   = idTabla.insertRow(0);
   
-    // Crea las celdas
-    for (var i = 1; i < 2; i++) {
-      // Crea las hileras de la tabla
-      var hilera = document.createElement("tr")
-        
-      for (var j = 0; j < 1; j++) {
-        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-        // texto sea el contenido de <td>, ubica el elemento <td> al final
-        // de la hilera de la tabla
-        //var a = document.getElementById(id).value;
+    // Inserta una celda en la fila, en el índice 0
+    var nuevaColumna  = nuevaFila.insertCell(0);
+    var nuevaColumna2 = nuevaFila.insertCell(1);
 
-        
-        //var nom= document.getElementById("nom").textContent;
-        //var prec = document.getElementById("pre").textContent;
-        
-        var celda = document.createElement("td")
-        var celda2 = document.createElement("td")
-        var textoCelda = document.createTextNode(nombre);        
-        var textoCelda2 = document.createTextNode(precio);
-
-        celda.appendChild(textoCelda);
-        celda2.appendChild(textoCelda2);
-        hilera.appendChild(celda);
-        hilera.appendChild(celda2);
-      }
   
-      // agrega la hilera al final de la tabla (al final del elemento tblbody)
-      tblBody.appendChild(hilera);
-    }
-  
-    // posiciona el <tbody> debajo del elemento <table>
-    tabla.appendChild(tblBody);
-    body.appendChild(tabla);
-    // modifica el atributo "border" de la tabla y lo fija a "2";
-    tabla.setAttribute("class", "table");
-    
-  }
+    // Añade un nodo de texto a la celda
+    var nombre  = document.createTextNode(nom);
+    var precio  = document.createTextNode(pre);
+ 
+    nuevaColumna.appendChild(nombre);
+    nuevaColumna2.appendChild(precio);
 
 
+    //Colocar estilos de la clase table de bootstrap
+    nuevaFila.setAttribute("class","table-light")
+
+}
